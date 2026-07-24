@@ -1,0 +1,9 @@
+[defaults]
+ignored = true
+dev_link = true
+
+[[suite]]
+name = "grid-core-unit"
+tier = "T1"
+path = "."
+ignored = false

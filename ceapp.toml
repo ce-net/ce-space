@@ -1,0 +1,25 @@
+[app]
+name = "ce-grid"
+version = "0.1.0"
+summary = "N-dimensional data comparison spaces over the CE mesh. Cells link to data anywhere by typed ref; a built-in representation dimension carries the shared plane; converter and AI capabilities located on the mesh do the projecting and comparing. The core backend of the grid app group."
+runtime = "native"
+provides = ["grid"]
+
+[native]
+bin = "ce-grid"
+
+# Talks only to the LOCAL node; control requests, converter calls, analysis
+# calls, and discovery all travel over the mesh. No listening socket.
+[sandbox]
+tier = "none"
+
+[deps]
+capabilities = []
+requires = ["native"]
+
+[daemon]
+enabled = true
+args = ["serve"]
+restart = "on-failure"
+
+# [native.artifacts] per-(os,arch) sha256 digests are filled by ce-publish at release time.
