@@ -10,7 +10,7 @@ use anyhow::{anyhow, Context, Result};
 use ce_rs::CeClient;
 use sha2::{Digest, Sha256};
 
-use crate::space::{Coords, Rule, SpaceMachine, Value, RAW, REPRESENTATION};
+use crate::space::{Coords, SpaceMachine, Value, RAW, REPRESENTATION};
 
 /// One pending conversion: source cell value -> target coordinates.
 #[derive(Debug, Clone)]
@@ -130,7 +130,7 @@ pub fn parse_convert_reply(raw: &[u8]) -> Result<Value> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::space::{Derivation, Op};
+    use crate::space::{Derivation, Op, Rule};
 
     fn coords(pairs: &[(&str, &str)]) -> Coords {
         pairs.iter().map(|(d, k)| (d.to_string(), k.to_string())).collect()
