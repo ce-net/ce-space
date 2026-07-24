@@ -6,7 +6,7 @@
 //! idempotent and order-convergent (LWW per cell point by Lamport time, writer
 //! id as tie-break), so replicas that see the same op set reach the same state.
 
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::BTreeMap;
 
 use serde::{Deserialize, Serialize};
 
