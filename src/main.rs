@@ -109,12 +109,17 @@ async fn main() -> Result<()> {
     let (flags, pos) = parse_args(&args[1..]);
 
     if cmd == "serve" {
+        // Default state lives in the HOME dir, not cwd: the app supervisor runs
+        // daemons from the install dir, and per-cwd state would silently fork.
         let state: PathBuf = flags
             .get("state")
             .cloned()
             .or_else(|| std::env::var("CE_GRID_STATE").ok())
-            .unwrap_or_else(|| "ce-grid.json".to_string())
-            .into();
+            .map(PathBuf::from)
+            .or_else(|| {
+                std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".ce-grid/ce-grid.json"))
+            })
+            .unwrap_or_else(|| "ce-grid.json".into());
         return ce_grid::service::run(&state).await;
     }
 
