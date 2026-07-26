@@ -1,21 +1,34 @@
-# ce-grid
+# ce-space
 
-N-dimensional data comparison spaces over the CE mesh — Google Sheets for all kinds of data.
-Structure anything, link anything by ref, project it onto a shared representation plane, and
-compare it with AI — without the data ever needing to live inside the grid.
+N-dimensional data comparison spaces over the CE mesh. Structure anything, link anything by
+ref, project it onto a shared representation plane, and compare it with AI — without the data
+ever needing to live inside the space.
 
-ce-grid is the core backend of the **grid app group**. The other members are separate apps
+> **The design and the reasoning live in Ocean**, not here:
+> *ce-space — the N-dimensional comparison space* (org Rydenfalk, project **Plans**, doc
+> `6bd4131c3b0c`), a child of *ce-foundry — a Foundry-class platform, emergent, on the mesh*
+> (`e4cf38155e29`). This README is the copy that travels with the repo; Ocean is the copy every
+> agent and every search can reach. Read that one first — in particular the ref-first rule and
+> the four things that must change before anything is built on top.
+
+**Renamed from `ce-grid` (2026-07-26).** A grid is regular, dense and two-dimensional; this is a
+sparse coordinate system with any number of named dimensions, where a 2D slice is a *view*. The
+word was also already taken by the electrical grid in ce-power/ce-city. Service `ce.grid`, topic
+`grid/ctl` and the `grid:*` namespace are gone with no aliases and no compatibility shims — a
+caller using them gets a refusal, not a silent fallback.
+
+ce-space is the core backend of the **space app group**. The other members are separate apps
 that compose with it over the mesh:
 
 | App | Role |
 |---|---|
-| ce-grid (this repo) | The spaces: dimensions, cells, refs, derivation rules, materialization, analysis orchestration |
-| github.com/ce-net/ce-grid-convert-text | `grid.convert.text` — anything -> the text plane |
-| github.com/ce-net/ce-grid-convert-embed | `grid.convert.embed` — anything -> the embedding plane |
-| github.com/ce-net/ce-grid-ai | `grid.ai` — compare / classify / summarize / policy-check |
-| github.com/ce-net/ce-grid-cell-table | a mesh-transmitted table view of any 2D slice |
-| github.com/ce-net/ce-grid-cell-chart | a mesh-transmitted chart of number cells along a dimension |
-| github.com/ce-net/ce-grid-web | the emergent dashboard host (hardcodes nothing) |
+| ce-space (this repo) | The spaces: dimensions, cells, refs, derivation rules, materialization, analysis orchestration |
+| github.com/ce-net/ce-space-convert-text | `space.convert.text` — anything -> the text plane |
+| github.com/ce-net/ce-space-convert-embed | `space.convert.embed` — anything -> the embedding plane |
+| github.com/ce-net/ce-space-ai | `space.ai` — compare / classify / summarize / policy-check |
+| github.com/ce-net/ce-space-cell-table | a mesh-transmitted table view of any 2D slice |
+| github.com/ce-net/ce-space-cell-chart | a mesh-transmitted chart of number cells along a dimension |
+| github.com/ce-net/ce-space-tour | the live visualization ceapp (mounted by ce-mesh-home, which hardcodes nothing) |
 
 The core never ships converters and never enumerates them: it locates whatever the mesh
 currently offers (DHT discovery). Install a new converter anywhere on the mesh and every
@@ -51,7 +64,7 @@ the mesh: `{source, converter, target_representation, params}`. Materialization 
 content-addressed memoized — a derived cell records the hash of (input, converter, params)
 and is only recomputed when that changes.
 
-**Analysis ops** run over representation slices via the `grid.ai` capability: `compare`,
+**Analysis ops** run over representation slices via the `space.ai` capability: `compare`,
 `classify`, `summarize`, and `check` (the policy op — verdicts are written back into the
 space as `label` cells at the same coordinates).
 
@@ -60,25 +73,25 @@ space as `label` cells at the same coordinates).
 ```bash
 # On a machine with a running ce node:
 cargo build --release
-./target/release/ce-grid serve &          # or: ce app install ./ce-grid
+./target/release/ce-space serve &          # or: ce app install ./ce-space
 
-ce-grid create audit
-ce-grid set audit --at document=d1,representation=raw --text "We retain user data for 30 days."
-ce-grid set audit --at policy=gdpr --text "must not retain user data longer than 90 days"
+ce-space create audit
+ce-space set audit --at document=d1,representation=raw --text "We retain user data for 30 days."
+ce-space set audit --at policy=gdpr --text "must not retain user data longer than 90 days"
 
-# Project the raw plane onto text (needs ce-grid-convert-text running somewhere on the mesh):
-ce-grid rule audit --id to-text --converter grid.convert.text --target text
-ce-grid materialize audit
+# Project the raw plane onto text (needs ce-space-convert-text running somewhere on the mesh):
+ce-space rule audit --id to-text --converter space.convert.text --target text
+ce-space materialize audit
 
-# Check every document against a policy (needs ce-grid-ai on the mesh):
-ce-grid analyze audit --op check --fix representation=text \
+# Check every document against a policy (needs ce-space-ai on the mesh):
+ce-space analyze audit --op check --fix representation=text \
   --params '{"policy":"must not retain user data longer than 90 days"}'
 
-ce-grid slice audit --fix representation=label     # the verdicts, as cells
-ce-grid slice audit --fix document=d1              # everything known about d1, all planes
+ce-space slice audit --fix representation=label     # the verdicts, as cells
+ce-space slice audit --fix document=d1              # everything known about d1, all planes
 ```
 
-## Wire contract (topic `grid/ctl`, service `ce.grid`)
+## Wire contract (topic `space/ctl`, service `ce.space`)
 
 Requests are JSON tagged on `cmd`; responses tagged on `status`. Examples:
 
@@ -105,7 +118,7 @@ Converter contract (what `materialize` calls, topic `<converter>/ctl`):
 
 ## Trust
 
-The `grid:*` capability namespace is declared in `cecapabilities.toml` (this app owns it).
+The `space:*` capability namespace is declared in `cecapabilities.toml` (this app owns it).
 v1 enforcement, honestly: reads are open to any authenticated mesh caller; every mutation
 (including materialize/analyze) is gated to the owning node. Cap-gated remote writes verify
 a ce-cap chain per op class and layer on without a wire change.

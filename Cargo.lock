@@ -82,7 +82,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ce-grid"
+name = "ce-space"
 version = "0.1.0"
 dependencies = [
  "anyhow",

@@ -1,5 +1,5 @@
-//! The grid wire protocol: one JSON request/response surface shared by every
-//! skin (mesh service on `grid/ctl`, loopback socket for local CLIs, future
+//! The space wire protocol: one JSON request/response surface shared by every
+//! skin (mesh service on `space/ctl`, loopback socket for local CLIs, future
 //! MCP/frontend consumers). Handling a request = routing it onto the
 //! `SpaceMachine`; mutations come back as stamped ops for the caller (the
 //! daemon) to append to the replicated log.
@@ -39,7 +39,7 @@ pub enum Request {
         rule: Option<String>,
     },
     /// Run an analysis op (compare/classify/summarize/check) over a slice via
-    /// the grid.ai service. Daemon-level, same interception rule.
+    /// the space.ai service. Daemon-level, same interception rule.
     Analyze {
         space: String,
         op: String,

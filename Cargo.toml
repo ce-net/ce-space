@@ -1,17 +1,17 @@
 [package]
-name = "ce-grid"
+name = "ce-space"
 version = "0.1.0"
 edition = "2024"
-description = "N-dimensional data comparison spaces over the CE mesh — Google Sheets for all kinds of data: link anything by ref, project it onto a shared representation plane via mesh converters, compare it with AI ops. The core backend of the grid app group."
+description = "N-dimensional data comparison spaces over the CE mesh — Google Sheets for all kinds of data: link anything by ref, project it onto a shared representation plane via mesh converters, compare it with AI ops. The core backend of the space app group."
 license = "AGPL-3.0-only"
-repository = "https://github.com/ce-net/ce-grid"
+repository = "https://github.com/ce-net/ce-space"
 
 [lib]
-name = "ce_grid"
+name = "ce_space"
 path = "src/lib.rs"
 
 [[bin]]
-name = "ce-grid"
+name = "ce-space"
 path = "src/main.rs"
 
 [dependencies]

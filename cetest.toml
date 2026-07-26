@@ -3,7 +3,7 @@ ignored = true
 dev_link = true
 
 [[suite]]
-name = "grid-core-unit"
+name = "space-core-unit"
 tier = "T1"
 path = "."
 ignored = false

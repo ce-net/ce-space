@@ -150,7 +150,7 @@ mod tests {
                 rule: Rule {
                     id: "r1".into(),
                     source: Coords::new(),
-                    converter: "grid.convert.text".into(),
+                    converter: "space.convert.text".into(),
                     target_representation: "text".into(),
                     params: None,
                 },
@@ -171,7 +171,7 @@ mod tests {
         let item = &items[0];
         assert_eq!(item.target.get(REPRESENTATION).unwrap(), "text");
         assert_eq!(item.target.get("document").unwrap(), "d1");
-        assert_eq!(item.converter, "grid.convert.text");
+        assert_eq!(item.converter, "space.convert.text");
     }
 
     #[test]

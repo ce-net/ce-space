@@ -1,0 +1,965 @@
+{
+  "spaces": {
+    "demo": {
+      "name": "demo",
+      "dimensions": {
+        "item": {
+          "name": "item",
+          "kind": "string",
+          "coords": [
+            "laptop",
+            "relay",
+            "board"
+          ]
+        },
+        "metric": {
+          "name": "metric",
+          "kind": "string",
+          "coords": [
+            "cores"
+          ]
+        },
+        "policy": {
+          "name": "policy",
+          "kind": "string",
+          "coords": [
+            "fleet"
+          ]
+        },
+        "representation": {
+          "name": "representation",
+          "kind": "string",
+          "coords": [
+            "raw",
+            "embedding",
+            "text",
+            "label"
+          ]
+        }
+      },
+      "cells": {
+        "item=board\u001fmetric=cores": {
+          "coords": {
+            "item": "board",
+            "metric": "cores"
+          },
+          "value": {
+            "kind": "number",
+            "number": 2.0
+          },
+          "lamport": 7,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=board\u001fmetric=cores\u001frepresentation=embedding": {
+          "coords": {
+            "item": "board",
+            "metric": "cores",
+            "representation": "embedding"
+          },
+          "value": {
+            "kind": "vector",
+            "vector": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lamport": 11,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=board\u001fmetric=cores\u001frepresentation=label": {
+          "coords": {
+            "item": "board",
+            "metric": "cores",
+            "representation": "label"
+          },
+          "value": {
+            "kind": "text",
+            "text": "unclear"
+          },
+          "lamport": 26,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=board\u001fmetric=cores\u001frepresentation=text": {
+          "coords": {
+            "item": "board",
+            "metric": "cores",
+            "representation": "text"
+          },
+          "value": {
+            "kind": "text",
+            "text": "2"
+          },
+          "lamport": 18,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=board\u001frepresentation=embedding": {
+          "coords": {
+            "item": "board",
+            "representation": "embedding"
+          },
+          "value": {
+            "kind": "vector",
+            "vector": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.4082483,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.4082483,
+              0.0,
+              0.0,
+              -0.4082483,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.4082483,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.4082483,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.4082483,
+              0.0,
+              0.0
+            ]
+          },
+          "lamport": 12,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=board\u001frepresentation=label": {
+          "coords": {
+            "item": "board",
+            "representation": "label"
+          },
+          "value": {
+            "kind": "text",
+            "text": "unclear"
+          },
+          "lamport": 27,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=board\u001frepresentation=raw": {
+          "coords": {
+            "item": "board",
+            "representation": "raw"
+          },
+          "value": {
+            "kind": "text",
+            "text": "Arduino UNO Q, battery powered, roaming"
+          },
+          "lamport": 4,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=board\u001frepresentation=text": {
+          "coords": {
+            "item": "board",
+            "representation": "text"
+          },
+          "value": {
+            "kind": "text",
+            "text": "Arduino UNO Q, battery powered, roaming"
+          },
+          "lamport": 19,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=laptop\u001fmetric=cores": {
+          "coords": {
+            "item": "laptop",
+            "metric": "cores"
+          },
+          "value": {
+            "kind": "number",
+            "number": 12.0
+          },
+          "lamport": 5,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=laptop\u001fmetric=cores\u001frepresentation=embedding": {
+          "coords": {
+            "item": "laptop",
+            "metric": "cores",
+            "representation": "embedding"
+          },
+          "value": {
+            "kind": "vector",
+            "vector": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lamport": 13,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=laptop\u001fmetric=cores\u001frepresentation=label": {
+          "coords": {
+            "item": "laptop",
+            "metric": "cores",
+            "representation": "label"
+          },
+          "value": {
+            "kind": "text",
+            "text": "unclear"
+          },
+          "lamport": 29,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=laptop\u001fmetric=cores\u001frepresentation=text": {
+          "coords": {
+            "item": "laptop",
+            "metric": "cores",
+            "representation": "text"
+          },
+          "value": {
+            "kind": "text",
+            "text": "12"
+          },
+          "lamport": 20,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=laptop\u001frepresentation=embedding": {
+          "coords": {
+            "item": "laptop",
+            "representation": "embedding"
+          },
+          "value": {
+            "kind": "vector",
+            "vector": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.70710677,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.35355338,
+              0.0,
+              0.0,
+              0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lamport": 14,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=laptop\u001frepresentation=label": {
+          "coords": {
+            "item": "laptop",
+            "representation": "label"
+          },
+          "value": {
+            "kind": "text",
+            "text": "unclear"
+          },
+          "lamport": 30,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=laptop\u001frepresentation=raw": {
+          "coords": {
+            "item": "laptop",
+            "representation": "raw"
+          },
+          "value": {
+            "kind": "text",
+            "text": "MacBook M3, primary dev machine, 16GB"
+          },
+          "lamport": 2,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=laptop\u001frepresentation=text": {
+          "coords": {
+            "item": "laptop",
+            "representation": "text"
+          },
+          "value": {
+            "kind": "text",
+            "text": "MacBook M3, primary dev machine, 16GB"
+          },
+          "lamport": 21,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=relay\u001fmetric=cores": {
+          "coords": {
+            "item": "relay",
+            "metric": "cores"
+          },
+          "value": {
+            "kind": "number",
+            "number": 4.0
+          },
+          "lamport": 6,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=relay\u001fmetric=cores\u001frepresentation=embedding": {
+          "coords": {
+            "item": "relay",
+            "metric": "cores",
+            "representation": "embedding"
+          },
+          "value": {
+            "kind": "vector",
+            "vector": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lamport": 15,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=relay\u001fmetric=cores\u001frepresentation=label": {
+          "coords": {
+            "item": "relay",
+            "metric": "cores",
+            "representation": "label"
+          },
+          "value": {
+            "kind": "text",
+            "text": "unclear"
+          },
+          "lamport": 32,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=relay\u001fmetric=cores\u001frepresentation=text": {
+          "coords": {
+            "item": "relay",
+            "metric": "cores",
+            "representation": "text"
+          },
+          "value": {
+            "kind": "text",
+            "text": "4"
+          },
+          "lamport": 22,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=relay\u001frepresentation=embedding": {
+          "coords": {
+            "item": "relay",
+            "representation": "embedding"
+          },
+          "value": {
+            "kind": "vector",
+            "vector": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.33333334,
+              0.0,
+              0.0,
+              0.0,
+              -0.6666667,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.33333334,
+              0.0,
+              0.0,
+              0.0,
+              0.33333334,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.33333334,
+              0.0,
+              -0.33333334,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lamport": 16,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=relay\u001frepresentation=label": {
+          "coords": {
+            "item": "relay",
+            "representation": "label"
+          },
+          "value": {
+            "kind": "text",
+            "text": "unclear"
+          },
+          "lamport": 33,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=relay\u001frepresentation=raw": {
+          "coords": {
+            "item": "relay",
+            "representation": "raw"
+          },
+          "value": {
+            "kind": "text",
+            "text": "Hetzner cpx22 public relay, 4 vCPU, Falkenstein"
+          },
+          "lamport": 3,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "item=relay\u001frepresentation=text": {
+          "coords": {
+            "item": "relay",
+            "representation": "text"
+          },
+          "value": {
+            "kind": "text",
+            "text": "Hetzner cpx22 public relay, 4 vCPU, Falkenstein"
+          },
+          "lamport": 23,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "policy=fleet": {
+          "coords": {
+            "policy": "fleet"
+          },
+          "value": {
+            "kind": "text",
+            "text": "must not run economy or chain services on fleet nodes"
+          },
+          "lamport": 8,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "policy=fleet\u001frepresentation=embedding": {
+          "coords": {
+            "policy": "fleet",
+            "representation": "embedding"
+          },
+          "value": {
+            "kind": "vector",
+            "vector": [
+              0.0,
+              0.0,
+              -0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.35355338,
+              0.0,
+              -0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.35355338,
+              0.35355338,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "lamport": 17,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "policy=fleet\u001frepresentation=label": {
+          "coords": {
+            "policy": "fleet",
+            "representation": "label"
+          },
+          "value": {
+            "kind": "text",
+            "text": "fail"
+          },
+          "lamport": 35,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        },
+        "policy=fleet\u001frepresentation=text": {
+          "coords": {
+            "policy": "fleet",
+            "representation": "text"
+          },
+          "value": {
+            "kind": "text",
+            "text": "must not run economy or chain services on fleet nodes"
+          },
+          "lamport": 24,
+          "writer": "c0be11e0ce0aaa769da6f9970244947d3d32a0c0d8302fb5f41f73d7950be456"
+        }
+      },
+      "rules": {
+        "to-embed": {
+          "id": "to-embed",
+          "source": {},
+          "converter": "grid.convert.embed",
+          "target_representation": "embedding"
+        },
+        "to-text": {
+          "id": "to-text",
+          "source": {},
+          "converter": "grid.convert.text",
+          "target_representation": "text"
+        }
+      },
+      "derived": {
+        "item=board\u001fmetric=cores\u001frepresentation=embedding": {
+          "rule_id": "to-embed",
+          "converter": "grid.convert.embed",
+          "input_key": "8004e823e8acf386f80ce67e32c5bfbccdc2daeb68ebde9490e99472e1b8e77a"
+        },
+        "item=board\u001fmetric=cores\u001frepresentation=label": {
+          "rule_id": "analyze:check",
+          "converter": "grid.ai",
+          "input_key": "179ab83660c413402e3b5cd1faf06ecdba1e61ad378443afb18a244ae9b94ba1"
+        },
+        "item=board\u001fmetric=cores\u001frepresentation=text": {
+          "rule_id": "to-text",
+          "converter": "grid.convert.text",
+          "input_key": "89e9a7e529faf6d92287af1c4dcf57d1db0908bdcf91a4529768f8179d42529b"
+        },
+        "item=board\u001frepresentation=embedding": {
+          "rule_id": "to-embed",
+          "converter": "grid.convert.embed",
+          "input_key": "6bfdd7507dd80e636d5b8ac6e4f59a84a3c5ea8637d65fac494d75736150d18d"
+        },
+        "item=board\u001frepresentation=label": {
+          "rule_id": "analyze:check",
+          "converter": "grid.ai",
+          "input_key": "cd7c2e38a0ab0ef6caddcfff656d83367c80a7a4530d5376f428537fb6873e30"
+        },
+        "item=board\u001frepresentation=text": {
+          "rule_id": "to-text",
+          "converter": "grid.convert.text",
+          "input_key": "6ee680b72e03796825efec03bcb84917d999a6e068ae3f1e6e638f70f0be6d8e"
+        },
+        "item=laptop\u001fmetric=cores\u001frepresentation=embedding": {
+          "rule_id": "to-embed",
+          "converter": "grid.convert.embed",
+          "input_key": "136aa107ccb0bc6a7ba257e3a61f4d488fc438cf240d92e592e72c4f9d296c47"
+        },
+        "item=laptop\u001fmetric=cores\u001frepresentation=label": {
+          "rule_id": "analyze:check",
+          "converter": "grid.ai",
+          "input_key": "ff71925605a047ba81a66be888d633e2179f1415633fa9ff462c33ea2cba6cfc"
+        },
+        "item=laptop\u001fmetric=cores\u001frepresentation=text": {
+          "rule_id": "to-text",
+          "converter": "grid.convert.text",
+          "input_key": "916b6b2e72455e8f75bb28aefd30692a84dd5b08e4dadc7ed7ffad7a77631c03"
+        },
+        "item=laptop\u001frepresentation=embedding": {
+          "rule_id": "to-embed",
+          "converter": "grid.convert.embed",
+          "input_key": "e18ca70a652f5179ab6e7b777a3c96ba00b2b7f463a4c88734d94ad7f6ad3ea6"
+        },
+        "item=laptop\u001frepresentation=label": {
+          "rule_id": "analyze:check",
+          "converter": "grid.ai",
+          "input_key": "16d0c78a51ae966e344668420407ed7d65e32728015ea1bac09e3d1a26f9a3da"
+        },
+        "item=laptop\u001frepresentation=text": {
+          "rule_id": "to-text",
+          "converter": "grid.convert.text",
+          "input_key": "285ae88a0f272ac99a540bfe0229256ecd99770304556c7271372c488ea2e295"
+        },
+        "item=relay\u001fmetric=cores\u001frepresentation=embedding": {
+          "rule_id": "to-embed",
+          "converter": "grid.convert.embed",
+          "input_key": "2a7857eaa9db588e5d0eabef38f8dfb5fa5ee8bec1fce36a947c4a5ffd306e7c"
+        },
+        "item=relay\u001fmetric=cores\u001frepresentation=label": {
+          "rule_id": "analyze:check",
+          "converter": "grid.ai",
+          "input_key": "96fd39bbdc1d4291bb4f47e8be05aebd77dd20191585d812c31bf0fe94585f8b"
+        },
+        "item=relay\u001fmetric=cores\u001frepresentation=text": {
+          "rule_id": "to-text",
+          "converter": "grid.convert.text",
+          "input_key": "d7ff764749887995e442cdc549a031a81088b23aa56d6af1ab65342d22aa0955"
+        },
+        "item=relay\u001frepresentation=embedding": {
+          "rule_id": "to-embed",
+          "converter": "grid.convert.embed",
+          "input_key": "3627d5a5e869b7f338093cd97cd5244f9cf3afd6287d5323e7870181eb9de73f"
+        },
+        "item=relay\u001frepresentation=label": {
+          "rule_id": "analyze:check",
+          "converter": "grid.ai",
+          "input_key": "0e1a14ba6a4cfb872878e5b0251081fe59fc3e967a3b7910e8cf6f03f11bbc22"
+        },
+        "item=relay\u001frepresentation=text": {
+          "rule_id": "to-text",
+          "converter": "grid.convert.text",
+          "input_key": "9b0a4eebf2835069ecadf47bbd85d042803d7517784adb7ac2862a643605668d"
+        },
+        "policy=fleet\u001frepresentation=embedding": {
+          "rule_id": "to-embed",
+          "converter": "grid.convert.embed",
+          "input_key": "a5dfcbbb7840d7855d077dd8576e42c1a9e13d1305565b3649cd2bad1ea6fc9b"
+        },
+        "policy=fleet\u001frepresentation=label": {
+          "rule_id": "analyze:check",
+          "converter": "grid.ai",
+          "input_key": "ce969fe618142e818ee0468dfeb32553cc57702485efde14a0b71cbfeaced0ef"
+        },
+        "policy=fleet\u001frepresentation=text": {
+          "rule_id": "to-text",
+          "converter": "grid.convert.text",
+          "input_key": "84672a6a8144fefdfaf5f2ce263e7b8bbd5fbb83bf9d2afa888f9ecf386f4b88"
+        }
+      }
+    }
+  },
+  "clock": 35
+}

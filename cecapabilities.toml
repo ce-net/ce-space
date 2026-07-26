@@ -1,4 +1,4 @@
-# Capability definitions OWNED by ce-grid (the enforcer of the grid:* namespace).
+# Capability definitions OWNED by ce-space (the enforcer of the space:* namespace).
 # The substrate never reads this file — it matches opaque strings; meaning lives here.
 #
 # v1 enforcement status (honest): reads are open and writes are gated to the
@@ -7,32 +7,32 @@
 # ce-cap chain against the caller for each op class.
 
 [[capability]]
-name = "grid:read"
-resource = "the spaces served by one ce-grid instance (dimensions, cells, rules)"
+name = "space:read"
+resource = "the spaces served by one ce-space instance (dimensions, cells, rules)"
 actions = ["spaces", "describe", "get", "slice", "rules"]
 attenuation = "per-space (grant for one space name)"
 caveats = ["cells may hold refs to data on other services; each of those services gates its own reads"]
 never-grants = ["any mutation", "dereferencing a ref's target bytes (that is the target service's concern)"]
 
 [[capability]]
-name = "grid:write"
-resource = "the cells, dimensions, and coordinates of spaces on one ce-grid instance"
+name = "space:write"
+resource = "the cells, dimensions, and coordinates of spaces on one ce-space instance"
 actions = ["create_space", "add_dimension", "add_coordinate", "set_cell", "clear_cell"]
 attenuation = "per-space; per-dimension-subset grants can only narrow this"
 caveats = ["writing a ref cell chooses what later converters will fetch — a write grant implies choosing inputs"]
 never-grants = ["writes on any OTHER instance", "defining derivation rules", "minting further grants"]
 
 [[capability]]
-name = "grid:define"
-resource = "the derivation rules of spaces on one ce-grid instance"
+name = "space:define"
+resource = "the derivation rules of spaces on one ce-space instance"
 actions = ["define_rule"]
 attenuation = "per-space"
 caveats = ["a rule names the converter service the daemon will call during materialize — defining rules directs outbound mesh calls"]
 never-grants = ["running materialization", "cell writes"]
 
 [[capability]]
-name = "grid:analyze"
-resource = "the materialize/analyze verbs of one ce-grid instance"
+name = "space:analyze"
+resource = "the materialize/analyze verbs of one ce-space instance"
 actions = ["materialize", "analyze (compare/classify/summarize/check)"]
 attenuation = "per-space; per-op grants can only narrow this"
 caveats = ["analysis writes derived label cells back into the space; it also spends converter/AI compute on the mesh"]

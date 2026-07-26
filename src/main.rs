@@ -1,5 +1,5 @@
-//! ce-grid CLI: `serve` runs this node's instance; every other verb is one
-//! JSON round-trip to a grid instance over the mesh (the local one by
+//! ce-space CLI: `serve` runs this node's instance; every other verb is one
+//! JSON round-trip to a space instance over the mesh (the local one by
 //! default, any node with `--node <id>`).
 
 use std::collections::BTreeMap;
@@ -8,27 +8,27 @@ use std::path::PathBuf;
 use anyhow::{anyhow, bail, Context, Result};
 use ce_rs::CeClient;
 
-use ce_grid::proto::{Request, Response};
-use ce_grid::service::CTL_TOPIC;
-use ce_grid::space::{Coords, Ref, Rule, Value};
+use ce_space::proto::{Request, Response};
+use ce_space::service::CTL_TOPIC;
+use ce_space::space::{Coords, Ref, Rule, Value};
 
-const USAGE: &str = "ce-grid — N-dimensional data comparison spaces over the CE mesh
+const USAGE: &str = "ce-space — N-dimensional data comparison spaces over the CE mesh
 
 USAGE:
-  ce-grid serve [--state <path>]                 run this node's instance
-  ce-grid spaces [--node <id>]                   list spaces
-  ce-grid create <space>                         create a space
-  ce-grid describe <space>                       dimensions, rules, cell count
-  ce-grid dim <space> <name> [--kind <k>]        add a dimension
-  ce-grid coord <space> <dim> <key>              declare a coordinate
-  ce-grid set <space> --at k=v[,k=v...] (--text s | --number f | --bool b | --ts ms | --json j | --ref scheme:addr)
-  ce-grid clear <space> --at k=v[,...]           tombstone a cell
-  ce-grid get <space> --at k=v[,...]             most specific cell at a point
-  ce-grid slice <space> [--fix k=v[,...]]        all cells compatible with the fix
-  ce-grid rule <space> --id r --converter c --target rep [--source k=v[,...]] [--params <json>]
-  ce-grid rules <space>                          list derivation rules
-  ce-grid materialize <space> [--rule r]         run pending derivations (via mesh converters)
-  ce-grid analyze <space> --op <compare|classify|summarize|check> [--fix k=v[,...]] [--params <json>]
+  ce-space serve [--state <path>]                 run this node's instance
+  ce-space spaces [--node <id>]                   list spaces
+  ce-space create <space>                         create a space
+  ce-space describe <space>                       dimensions, rules, cell count
+  ce-space dim <space> <name> [--kind <k>]        add a dimension
+  ce-space coord <space> <dim> <key>              declare a coordinate
+  ce-space set <space> --at k=v[,k=v...] (--text s | --number f | --bool b | --ts ms | --json j | --ref scheme:addr)
+  ce-space clear <space> --at k=v[,...]           tombstone a cell
+  ce-space get <space> --at k=v[,...]             most specific cell at a point
+  ce-space slice <space> [--fix k=v[,...]]        all cells compatible with the fix
+  ce-space rule <space> --id r --converter c --target rep [--source k=v[,...]] [--params <json>]
+  ce-space rules <space>                          list derivation rules
+  ce-space materialize <space> [--rule r]         run pending derivations (via mesh converters)
+  ce-space analyze <space> --op <compare|classify|summarize|check> [--fix k=v[,...]] [--params <json>]
 
 Every verb accepts --node <node-id> to target a remote instance (reads only in v1).";
 
@@ -114,13 +114,13 @@ async fn main() -> Result<()> {
         let state: PathBuf = flags
             .get("state")
             .cloned()
-            .or_else(|| std::env::var("CE_GRID_STATE").ok())
+            .or_else(|| std::env::var("CE_SPACE_STATE").ok())
             .map(PathBuf::from)
             .or_else(|| {
-                std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".ce-grid/ce-grid.json"))
+                std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".ce-space/ce-space.json"))
             })
-            .unwrap_or_else(|| "ce-grid.json".into());
-        return ce_grid::service::run(&state).await;
+            .unwrap_or_else(|| "ce-space.json".into());
+        return ce_space::service::run(&state).await;
     }
 
     let ce = CeClient::local();
@@ -215,7 +215,7 @@ async fn main() -> Result<()> {
         .await
         .with_context(|| {
             format!(
-                "no reply from grid instance on {} — is `ce-grid serve` running there?",
+                "no reply from space instance on {} — is `ce-space serve` running there?",
                 &target[..target.len().min(8)]
             )
         })?;

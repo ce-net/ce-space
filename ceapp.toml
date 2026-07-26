@@ -1,12 +1,12 @@
 [app]
-name = "ce-grid"
+name = "ce-space"
 version = "0.1.0"
-summary = "N-dimensional data comparison spaces over the CE mesh. Cells link to data anywhere by typed ref; a built-in representation dimension carries the shared plane; converter and AI capabilities located on the mesh do the projecting and comparing. The core backend of the grid app group."
+summary = "N-dimensional data comparison spaces over the CE mesh. Cells link to data anywhere by typed ref; a built-in representation dimension carries the shared plane; converter and AI capabilities located on the mesh do the projecting and comparing. The core backend of the space app group."
 runtime = "native"
-provides = ["grid"]
+provides = ["space"]
 
 [native]
-bin = "ce-grid"
+bin = "ce-space"
 
 # Talks only to the LOCAL node; control requests, converter calls, analysis
 # calls, and discovery all travel over the mesh. No listening socket.

@@ -1,26 +1,26 @@
 ---
-name: ce-grid
-description: How to operate and extend ce-grid — N-dimensional data comparison spaces over the CE mesh (the core of the grid app group). Read before touching this repo or building against the grid/ctl wire contract.
+name: ce-space
+description: How to operate and extend ce-space — N-dimensional data comparison spaces over the CE mesh (the core of the space app group). Read before touching this repo or building against the space/ctl wire contract.
 ---
 
-# ce-grid
+# ce-space
 
-The core backend of the grid app group: sparse N-dimensional spaces whose cells hold inline
+The core backend of the space app group: sparse N-dimensional spaces whose cells hold inline
 values or typed refs to data anywhere on the mesh, a built-in `representation` dimension
 carrying the shared comparison plane, derivation rules materialized by mesh-located
-converter capabilities, and analysis ops composed from the `grid.ai` capability.
+converter capabilities, and analysis ops composed from the `space.ai` capability.
 
 ## Operate
 
-- `ce-grid serve [--state <path>]` — run this node's instance (needs a running ce node).
-  State defaults to `ce-grid.json` in cwd, or `$CE_GRID_STATE`.
-- Every other verb is one mesh round-trip on topic `grid/ctl` (service `ce.grid`), local
+- `ce-space serve [--state <path>]` — run this node's instance (needs a running ce node).
+  State defaults to `ce-space.json` in cwd, or `$CE_SPACE_STATE`.
+- Every other verb is one mesh round-trip on topic `space/ctl` (service `ce.space`), local
   node by default, `--node <id>` for remote instances (reads only in v1).
 - Coordinate tuples on the CLI are `dim=key,dim2=key2` (`--at`, `--fix`, `--source`).
 - The demo loop: `create` -> `set` raw cells -> `rule` (converter + target representation)
   -> `materialize` -> `analyze --op check` -> `slice --fix representation=label`.
-- Materialize/analyze need converter apps on the mesh: ce-grid-convert-text,
-  ce-grid-convert-embed, ce-grid-ai (each its own repo under github.com/ce-net).
+- Materialize/analyze need converter apps on the mesh: ce-space-convert-text,
+  ce-space-convert-embed, ce-space-ai (each its own repo under github.com/ce-net).
 
 ## Code map
 
@@ -47,6 +47,6 @@ converter capabilities, and analysis ops composed from the `grid.ai` capability.
   (apply in both orders, assert equal states).
 - Wire shapes are a cross-language contract (Python converters, JS cells parse them).
   Never rename JSON tags; add optional fields only.
-- Cap-gating goes in `service.rs::handle` per op class (`grid:read`/`grid:write`/
-  `grid:define`/`grid:analyze` — see cecapabilities.toml); never in the pure layers.
+- Cap-gating goes in `service.rs::handle` per op class (`space:read`/`space:write`/
+  `space:define`/`space:analyze` — see cecapabilities.toml); never in the pure layers.
 - Tests are colocated and node-free (dead client `http://127.0.0.1:9` in service tests).

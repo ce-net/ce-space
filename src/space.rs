@@ -89,7 +89,7 @@ pub struct Rule {
     /// Dimensions fixed on the source slice (representation is implied `raw`
     /// unless present here).
     pub source: Coords,
-    /// Converter capability name, e.g. "grid.convert.text".
+    /// Converter capability name, e.g. "space.convert.text".
     pub converter: String,
     /// Target coordinate on the representation axis, e.g. "text".
     pub target_representation: String,
@@ -509,13 +509,13 @@ mod tests {
             value: text("plain rendering"),
             derivation: Derivation {
                 rule_id: "r1".into(),
-                converter: "grid.convert.text".into(),
+                converter: "space.convert.text".into(),
                 input_key: "abc123".into(),
             },
         });
         m.apply(&op);
         let k = cell_key(&at);
-        assert_eq!(m.spaces["s"].derived[&k].converter, "grid.convert.text");
+        assert_eq!(m.spaces["s"].derived[&k].converter, "space.convert.text");
     }
 
     #[test]

@@ -1,8 +1,8 @@
-//! The ce-grid instance: a mesh service on `grid/ctl` owning this node's
+//! The ce-space instance: a mesh service on `space/ctl` owning this node's
 //! spaces. Reads are open to any authenticated mesh caller; mutations are
-//! gated to the owning node in v1 (cap-gated remote writes via grid:write are
+//! gated to the owning node in v1 (cap-gated remote writes via space:write are
 //! the documented next step — the namespace is declared in
-//! cecapabilities.toml). Materialize/analyze compose converter and grid.ai
+//! cecapabilities.toml). Materialize/analyze compose converter and space.ai
 //! capabilities located on the mesh.
 
 use std::path::Path;
@@ -19,16 +19,16 @@ use crate::space::{Coords, Derivation, SpaceMachine, Value, REPRESENTATION};
 use crate::store::Store;
 
 /// DHT service name instances advertise.
-pub const SERVICE: &str = "ce.grid";
+pub const SERVICE: &str = "ce.space";
 /// The request/reply control topic.
-pub const CTL_TOPIC: &str = "grid/ctl";
+pub const CTL_TOPIC: &str = "space/ctl";
 
 const ADVERTISE_INTERVAL: Duration = Duration::from_secs(30);
 const CONVERT_TIMEOUT_MS: u64 = 30_000;
 const AI_TIMEOUT_MS: u64 = 60_000;
 /// The analysis service and its topic (a separate ceapp).
-const AI_SERVICE: &str = "grid.ai";
-const AI_TOPIC: &str = "grid.ai/ctl";
+const AI_SERVICE: &str = "space.ai";
+const AI_TOPIC: &str = "space.ai/ctl";
 
 pub struct Service {
     pub ce: CeClient,
@@ -66,7 +66,7 @@ impl Service {
         if mutates(&req) && from != self.self_node {
             return Response::error(format!(
                 "write refused: v1 accepts writes only from the owning node (caller {}, owner {}). \
-                 Fix: run the ce-grid CLI on the owning node; cap-gated remote writes (grid:write) \
+                 Fix: run the ce-space CLI on the owning node; cap-gated remote writes (space:write) \
                  are the documented next step.",
                 short(from),
                 short(&self.self_node)
@@ -141,7 +141,7 @@ impl Service {
         !matches!(handled.response, Response::Error { .. })
     }
 
-    /// Run one analysis op over a slice via the grid.ai service. The slice
+    /// Run one analysis op over a slice via the space.ai service. The slice
     /// defaults to the text plane unless `fixed` pins representation itself.
     async fn analyze(
         &self,
@@ -276,16 +276,16 @@ impl Service {
             AI_TIMEOUT_MS,
         )
         .await
-        .context("no grid.ai instance answered (is ce-grid-ai installed on the mesh?)")?;
+        .context("no space.ai instance answered (is ce-space-ai installed on the mesh?)")?;
         let reply: serde_json::Value =
-            serde_json::from_slice(&raw).context("undecodable grid.ai reply")?;
+            serde_json::from_slice(&raw).context("undecodable space.ai reply")?;
         if let Some(err) = reply.get("error").and_then(|e| e.as_str()) {
-            anyhow::bail!("grid.ai refused: {err}");
+            anyhow::bail!("space.ai refused: {err}");
         }
         reply
             .get("result")
             .cloned()
-            .ok_or_else(|| anyhow::anyhow!("grid.ai reply lacks result"))
+            .ok_or_else(|| anyhow::anyhow!("space.ai reply lacks result"))
     }
 }
 
@@ -293,9 +293,9 @@ fn short(id: &str) -> &str {
     &id[..id.len().min(8)]
 }
 
-pub struct GridHandler(pub Arc<Service>);
+pub struct SpaceHandler(pub Arc<Service>);
 
-impl ce_rs::serve::Handler for GridHandler {
+impl ce_rs::serve::Handler for SpaceHandler {
     async fn handle(&self, req: ce_rs::serve::Request) -> Vec<u8> {
         let resp = self.0.handle(&req.from, &req.payload).await;
         serde_json::to_vec(&resp)
@@ -303,7 +303,7 @@ impl ce_rs::serve::Handler for GridHandler {
     }
 }
 
-/// Run the instance: serve grid/ctl + advertise ce.grid until ctrl-c.
+/// Run the instance: serve space/ctl + advertise ce.space until ctrl-c.
 pub async fn run(store_path: &Path) -> Result<()> {
     use futures_util::FutureExt as _;
 
@@ -317,7 +317,7 @@ pub async fn run(store_path: &Path) -> Result<()> {
     tracing::info!(
         node = %short(&status.node_id),
         state = %store_path.display(),
-        "ce-grid instance serving on {CTL_TOPIC} (service {SERVICE})"
+        "ce-space instance serving on {CTL_TOPIC} (service {SERVICE})"
     );
 
     let shutdown = async {
@@ -325,7 +325,7 @@ pub async fn run(store_path: &Path) -> Result<()> {
     }
     .shared();
 
-    let handler = GridHandler(svc.clone());
+    let handler = SpaceHandler(svc.clone());
     let serve_fut = ce_rs::serve::serve(&ce, &[CTL_TOPIC], &handler, shutdown.clone());
     let register_ce = ce.clone();
     let register_fut = async {
@@ -355,7 +355,7 @@ mod tests {
     }
 
     fn svc(dir: &tempfile::TempDir) -> Service {
-        let store = Store::open(&dir.path().join("grid.json"));
+        let store = Store::open(&dir.path().join("space.json"));
         Service::new(dead_client(), "owner-node".into(), store).unwrap()
     }
 

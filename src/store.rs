@@ -53,7 +53,7 @@ mod tests {
     #[test]
     fn roundtrip_and_missing_file() {
         let dir = tempfile::tempdir().unwrap();
-        let path = dir.path().join("grid.json");
+        let path = dir.path().join("space.json");
         let store = Store::open(&path);
         // Missing file loads as empty machine.
         assert!(store.load().unwrap().spaces.is_empty());
