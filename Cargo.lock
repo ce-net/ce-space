@@ -82,23 +82,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "ce-space"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "ce-rs",
- "futures-util",
- "hex",
- "serde",
- "serde_json",
- "sha2",
- "tempfile",
- "tokio",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "ce-lane"
 version = "0.1.0"
 dependencies = [
@@ -127,6 +110,23 @@ dependencies = [
  "sha2",
  "tokio",
  "tracing",
+]
+
+[[package]]
+name = "ce-space"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "ce-rs",
+ "futures-util",
+ "hex",
+ "serde",
+ "serde_json",
+ "sha2",
+ "tempfile",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]
